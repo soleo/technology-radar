@@ -41,3 +41,10 @@ yarn-error.log*
 # IDE
 *.code-workspace
 .idea
+
+# next-video
+videos/*
+!videos/*.json
+!videos/*.js
+!videos/*.ts
+public/_next-video

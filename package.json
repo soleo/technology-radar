@@ -4,7 +4,7 @@
     "sideEffects": false,
     "type": "module",
     "scripts": {
-        "dev": "next dev",
+        "dev": "next dev & npx next-video sync -w",
         "build": "next build",
         "start": "next start",
         "export": "next export",

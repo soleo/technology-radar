@@ -1,3 +1,4 @@
+import { withNextVideo } from "next-video/process";
 // @ts-check
 // Reference: https://github.com/tc39/proposal-import-attributes
 import packageJson from './package.json' with { type: 'json' };
@@ -23,4 +24,4 @@ const nextConfig = {
         ],
       },
 }
-export default nextConfig
+export default withNextVideo(nextConfig);
