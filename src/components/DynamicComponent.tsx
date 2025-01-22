@@ -12,7 +12,7 @@ type ComponentsMap = {
 const componentsMap: ComponentsMap = {
     // sections
     CardsSection: dynamic(() => namedComponent(import('./sections/CardsSection'), 'CardsSection')),
-    HeroSection: dynamic(() => namedComponent(import('./sections/HeroSection'), 'HeroSection'))
+    HeroSection: dynamic(() => namedComponent(import('./sections/HeroSection'), 'HeroSection')),
 };
 
 export const DynamicComponent: FC<Props> = (props) => {

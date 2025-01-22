@@ -3,12 +3,12 @@ title: Home
 type: Page
 sections:
   - type: HeroSection
-    title: Hero Title
-    subtitle: 'Featuring TypeScript, Next.js, MUI v5 & Emotion'
+    title: 'New Year, New Layout'
+    subtitle: Unlock Live Editing & Showing A Hero
     text: >
       This is the HeroSection component. You can visually edit this component &
       add more sections while developing locally. [Learn
-      more.](https://docs.netlify.com/visual-editor/local-development/)
+      more.](https://www.xinjiangshao.com)
     actions:
       - type: Button
         label: Start Building
@@ -26,6 +26,10 @@ sections:
       type: Image
       url: /images/hero.svg
       altText: Hero section image
+    media:
+      type: Image
+      url: /images/1697935508882.jpeg
+      altText: Image alt text
   - type: CardsSection
     title: Cards Section Component
     subtitle: Section subtitle here

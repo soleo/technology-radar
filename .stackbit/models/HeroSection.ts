@@ -29,9 +29,9 @@ export const HeroSection: Model =  {
         },
         {
             type: 'model',
-            name: 'image',
-            label: 'Image',
-            models: ['Image'],
+            name: 'media',
+            label: 'Media',
+            models: ['Image', "Video", "Icon"],
             default: { type: 'Image', url: 'https://assets.stackbit.com/components/images/default/hero.png', altText: 'Hero section image' }
         }
     ]

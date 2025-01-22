@@ -7,18 +7,19 @@ import MuiBox from '@mui/material/Box';
 import MuiGrid from '@mui/material/Grid';
 import MuiStack from '@mui/material/Stack';
 import MuiTypography from '@mui/material/Typography';
+import Player from 'next-video/player';
 
 export type Props = types.HeroSection & types.StackbitFieldPath;
 
 export const HeroSection: React.FC<Props> = (props) => {
-    const { title, subtitle, text, image, actions = [], 'data-sb-field-path': fieldPath } = props;
+    const { title, subtitle, text, media, actions = [], 'data-sb-field-path': fieldPath } = props;
     const hasTextContent = !!title || !!subtitle || !!text || actions.length > 0;
 
     return (
         <MuiBox sx={{ py: { xs: 6, sm: 10 } }} data-sb-field-path={fieldPath}>
             <MuiGrid container spacing={4}>
                 {hasTextContent && (
-                    <MuiGrid item xs={12} md={image?.url ? 6 : 12}>
+                    <MuiGrid item xs={12} md={media?.url ? 6 : 12}>
                         {title && (
                             <MuiTypography component="h1" variant="h2" color="text.primary" data-sb-field-path=".title">
                                 {title}
@@ -58,7 +59,7 @@ export const HeroSection: React.FC<Props> = (props) => {
                         )}
                     </MuiGrid>
                 )}
-                {image?.url && (
+                {media?.type === 'Image' && (
                     <MuiGrid item xs={12} md={hasTextContent ? 6 : 12}>
                         <MuiBox
                             component="img"
@@ -67,10 +68,15 @@ export const HeroSection: React.FC<Props> = (props) => {
                                 maxWidth: '100%',
                                 width: '100%'
                             }}
-                            alt={image?.altText}
-                            src={image?.url}
-                            data-sb-field-path=".image .image.url#@src .image.altText#@alt"
+                            alt={media?.altText}
+                            src={media?.url}
+                            data-sb-field-path=".media .media.url#@src .media.altText#@alt"
                         />
+                    </MuiGrid>
+                )}
+                {media?.type === 'Video' && (
+                    <MuiGrid item xs={12} md={hasTextContent ? 6 : 12}>
+                        <Player src={media.url} />
                     </MuiGrid>
                 )}
             </MuiGrid>

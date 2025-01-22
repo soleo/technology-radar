@@ -65,13 +65,29 @@ export type HeroSection = {
     subtitle?: string;
     text?: string;
     actions?: Button[];
-    image?: Image;
+    media?: Image | Video | Icon;
+    mediaPosition?: 'Left' | 'Right' | 'Full Width';
+    mediaAsBackground?: boolean;
 };
 
 export type Image = {
     type: 'Image';
     url?: string;
     altText?: string;
+};
+
+export type Video = {
+    type: 'Video';
+    url?: string;
+    altText?: string;
+};
+
+export type Icon = {
+    type: 'Icon';
+    icon: string;
+    url?: string;
+    size?: number;
+    color?: string;
 };
 
 export type Link = {

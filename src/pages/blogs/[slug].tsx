@@ -1,18 +1,17 @@
 import * as React from 'react';
 import Head from 'next/head';
-import { GetStaticPaths, GetStaticProps } from 'next';
 import type * as types from 'types';
 import { DynamicComponent } from '@/components/DynamicComponent';
 import { Header } from '@/components/sections/Header';
 import { Footer } from '@/components/sections/Footer';
-import { pagesByType, siteConfig, urlToContent } from '@/utils/content';
+import { siteConfig, urlToContent } from '@/utils/content';
 
 import MuiBox from '@mui/material/Box';
 import MuiContainer from '@mui/material/Container';
 
 export type Props = { page: types.Page; siteConfig: types.Config };
 
-const LandingPage: React.FC<Props> = ({ page, siteConfig }) => {
+const BlogPage: React.FC<Props> = ({ page, siteConfig }) => {
     return (
         <MuiBox sx={{ px: 3 }} data-sb-object-id={page.__id}>
             <MuiContainer maxWidth="lg" disableGutters={true}>
@@ -23,7 +22,7 @@ const LandingPage: React.FC<Props> = ({ page, siteConfig }) => {
                 </Head>
                 {siteConfig.header && <Header {...siteConfig.header} data-sb-object-id={siteConfig.__id} />}
                 {(page.sections ?? []).length > 0 && (
-                    <MuiBox component="main" data-sb-field-path="sections">
+                    <MuiBox component="article" data-sb-field-path="sections">
                         {(page.sections ?? []).map((section, index) => (
                             <DynamicComponent key={index} {...section} data-sb-field-path={`.${index}`} />
                         ))}
@@ -35,18 +34,16 @@ const LandingPage: React.FC<Props> = ({ page, siteConfig }) => {
     );
 };
 
-export default LandingPage;
+export default BlogPage;
 
-export const getStaticPaths: GetStaticPaths = () => {
-    const pages = pagesByType('Page');
-    return {
-        paths: Object.keys(pages),
-        fallback: false
+interface IBlogParams {
+    params: {
+        slug: string[];
     };
-};
+}
 
-export const getStaticProps: GetStaticProps<Props, { slug: string[] }> = ({ params }) => {
-    const url = '/' + (params?.slug || []).join('/');
+export const getServerSideProps = ({ params } : IBlogParams) => {
+    const url = '/' + (params.slug || []).join('/');
     const page = urlToContent(url) as types.Page;
     return { props: { page, siteConfig: siteConfig() } };
 };
