@@ -39,13 +39,6 @@ export const sbConfig = defineStackbitConfig({
             }
         }
     ],
-    modelExtensions: [
-        {
-          name: "hero",
-          type: "object",
-          fields: [{ name: "media", type: "image", source: "asset-source-name" }]
-        }
-    ],
     styleObjectModelName: 'ThemeStyle'
 });
 
