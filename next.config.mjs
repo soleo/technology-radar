@@ -12,6 +12,15 @@ const nextConfig = {
     trailingSlash: true,
     generateBuildId: async () => {
         return `${APP_NAME}-${APP_VERSION}`
-    }
+    },
+    images: {
+        remotePatterns: [
+          {
+            protocol: 'https',
+            hostname: 'images.unsplash.com',
+            pathname: '**',
+          },
+        ],
+      },
 }
 export default nextConfig

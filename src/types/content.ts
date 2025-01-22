@@ -65,8 +65,8 @@ export type HeroSection = {
     subtitle?: string;
     text?: string;
     actions?: Button[];
-    media?: Image | Video | Icon;
-    mediaPosition?: 'Left' | 'Right' | 'Full Width';
+    image?: Image;
+    video?: Video;
     mediaAsBackground?: boolean;
 };
 

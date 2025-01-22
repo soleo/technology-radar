@@ -6,6 +6,7 @@ import { Footer } from './Footer';
 import { Header } from './Header';
 import { HeroSection } from './HeroSection';
 import { Image } from './Image';
+import { Video } from './Video';
 import { Link } from './Link';
 import { Page } from './Page';
 import { ThemeStyle } from './ThemeStyle';
@@ -19,6 +20,7 @@ export const allModels = {
     Header, 
     HeroSection, 
     Image, 
+    Video,
     Link, 
     Page, 
     ThemeStyle, 

@@ -1,6 +1,6 @@
-import { Model } from '@stackbit/types';
+import { ObjectModel } from '@stackbit/types';
 
-export const HeroSection: Model =  {
+export const HeroSection: ObjectModel =  {
     type: 'object',
     name: 'HeroSection',
     label: 'Hero',
@@ -28,11 +28,28 @@ export const HeroSection: Model =  {
             ]
         },
         {
+            type: 'boolean',
+            name: 'mediaAsBackground',
+            label: 'Media as Background',
+            default: false
+        },
+        {
             type: 'model',
-            name: 'media',
-            label: 'Media',
-            models: ['Image', "Video", "Icon"],
-            default: { type: 'Image', url: 'https://assets.stackbit.com/components/images/default/hero.png', altText: 'Hero section image' }
+            name: 'image',
+            label: 'Image',
+            models: ['Image'],
+            default: {
+                type: 'Image',
+                url: 'https://assets.stackbit.com/components/images/default/hero.png',
+                altText: 'Hero section image'
+            }
+        },
+        {
+            type: 'model',
+            name: 'video',
+            label: 'Video',
+            models: ['Video'],
+            default: {}
         }
     ]
 };

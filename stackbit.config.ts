@@ -23,6 +23,29 @@ export const sbConfig = defineStackbitConfig({
         type: 'files',
         presetDirs: ['.stackbit/presets']
     },
+    assetSources: [
+        {
+            name: 'unsplash-asset-source',
+            type: 'iframe',
+            url: 'https://unsplash-asset-source.netlify.app',
+            // transform the value received from iframe if needed
+            transform: ({ assetData }) => {
+                return assetData.unsplashImageUrl;
+            },
+            // return an object with 'title' and 'image' extracted from the
+            // assetData (after any transformations)
+            preview: ({ assetData }: { assetData: string }) => {
+                return { title: '', image: assetData };
+            }
+        }
+    ],
+    modelExtensions: [
+        {
+          name: "hero",
+          type: "object",
+          fields: [{ name: "media", type: "image", source: "asset-source-name" }]
+        }
+    ],
     styleObjectModelName: 'ThemeStyle'
 });
 
