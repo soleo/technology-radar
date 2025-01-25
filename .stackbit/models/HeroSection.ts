@@ -4,10 +4,12 @@ export const HeroSection: ObjectModel =  {
     type: 'object',
     name: 'HeroSection',
     label: 'Hero',
-    labelField: 'title',
+    labelField: 'internalName',
     thumbnail: 'https://assets.stackbit.com/components/models/thumbnails/default.png',
     groups: ['sectionComponent'],
+    fieldGroups: [{ name: 'styles', label: 'Styles' }],
     fields: [
+        { type: 'string', name: 'internalName', label: 'Internal Name', default: '' },
         { type: 'string', name: 'title', label: 'Title', default: 'This Is A Big Hero Headline' },
         { type: 'string', name: 'subtitle', label: 'Subtitle', default: 'The section subtitle' },
         {
@@ -28,16 +30,10 @@ export const HeroSection: ObjectModel =  {
             ]
         },
         {
-            type: 'boolean',
-            name: 'mediaAsBackground',
-            label: 'Media as Background',
-            default: false
-        },
-        {
             type: 'model',
             name: 'image',
             label: 'Image',
-            models: ['Image'],
+            models: ['Image', 'Video'],
             default: {
                 type: 'Image',
                 url: 'https://assets.stackbit.com/components/images/default/hero.png',
@@ -50,6 +46,48 @@ export const HeroSection: ObjectModel =  {
             label: 'Video',
             models: ['Video'],
             default: {}
+        },
+        {
+            type: 'boolean',
+            name: 'mediaAsBackground',
+            label: 'Media as Background',
+            group: 'styles',
+            controlType: 'button-group',
+            default: false
+        },
+        {
+            type: 'enum',
+            name: 'backgroundColor',
+            label: 'Background Color',
+            group: 'styles',
+            options: [
+                { value: 'primary', label: 'Primary Color' },
+                { value: 'secondary', label: 'Secondary Color' },
+                { value: 'tertiary', label: 'Tertiary Color' },
+            ],
+        },
+        {
+            type: 'enum',
+            name: 'textAlign',
+            label: 'Text Align',
+            group: 'styles',
+            options: [
+                { value: 'left', label: 'Left' },
+                { value: 'center', label: 'Center' },
+                { value: 'right', label: 'Right' },
+            ],
+            default: 'center'
+        },
+        {
+            type: 'enum',
+            name: 'width',
+            label: 'Width',
+            group: 'styles',
+            options: [
+                { value: 'full', label: 'Full Width' },
+                { value: 'inset', label: 'Inset' },
+            ],
+            default: 'full'
         }
     ]
 };

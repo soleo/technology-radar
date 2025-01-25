@@ -4,10 +4,11 @@ export const CardsSection: Model =  {
     type: 'object',
     name: 'CardsSection',
     label: 'Cards',
-    labelField: 'title',
+    labelField: 'internalName',
     thumbnail: 'https://assets.stackbit.com/components/models/thumbnails/default.png',
     groups: ['sectionComponent'],
     fields: [
+        { type: 'string', name: 'internalName', label: 'Internal Name', default: '' },
         { type: 'string', name: 'title', label: 'Title', default: 'Featured Items' },
         { type: 'string', name: 'subtitle', label: 'Subtitle', default: 'The section subtitle' },
         {

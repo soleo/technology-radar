@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 import path from 'path';
-import { globSync } from "glob";
+import { globSync } from 'glob';
 import frontmatter from 'front-matter';
 import * as types from 'types';
 

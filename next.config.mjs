@@ -5,6 +5,7 @@ import packageJson from './package.json' with { type: 'json' };
 
 const APP_VERSION = packageJson.version;
 const APP_NAME = packageJson.name;
+const ASSET_PREFIX = `/assets/${APP_NAME}`;
 /**
  * @type {import('next').NextConfig}
  */
@@ -14,6 +15,15 @@ const nextConfig = {
     generateBuildId: async () => {
         return `${APP_NAME}-${APP_VERSION}`
     },
+    assetPrefix: ASSET_PREFIX,
+    rewrites: async () => {
+        return [
+            {
+                source: '/:path*',
+                destination: '/:path*',
+            },
+        ]
+    },
     images: {
         remotePatterns: [
           {
@@ -22,6 +32,6 @@ const nextConfig = {
             pathname: '**',
           },
         ],
-      },
+    },
 }
 export default withNextVideo(nextConfig);

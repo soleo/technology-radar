@@ -1,11 +1,10 @@
 import * as React from 'react';
-import Head from 'next/head';
-import type * as types from 'types';
-import { Header } from '@/components/sections/Header';
-import { Footer } from '@/components/sections/Footer';
-import config from "../../../content/data/config.json";
+import { BlogList } from '@/components/snowflakes/BlogList';
+
 import MuiBox from '@mui/material/Box';
 import MuiContainer from '@mui/material/Container';
+import config from "../../../content/data/config.json";
+import type * as types from 'types';
 import {
     dehydrate,
     DehydratedState,
@@ -14,16 +13,17 @@ import {
     QueryClientProvider,
   } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
-import { fetchBlogById } from '@/hooks/usePosts';
-import { Blog } from '@/components/snowflakes/Blog';
+import { fetchPosts } from '@/hooks/usePosts';
+import { Footer } from '@/components/sections/Footer';
+import Head from 'next/head';
+import { Header } from '@/components/sections/Header';
 
 export type Props = {
-    siteConfig: types.Config;
     dehydratedState: DehydratedState;
-    blogId: string;
+    siteConfig: types.Config;
 };
 
-const BlogPage: React.FC<Props> = ({ dehydratedState, blogId, siteConfig}) => {
+const BlogListPage: React.FC<Props> = ({ siteConfig, dehydratedState }) => {
     const [queryClient] = React.useState(() => new QueryClient())
 
     return (
@@ -32,12 +32,12 @@ const BlogPage: React.FC<Props> = ({ dehydratedState, blogId, siteConfig}) => {
                 <MuiBox sx={{ px: 3 }}>
                     <MuiContainer maxWidth="lg" disableGutters={true}>
                         <Head>
-                            <title>Blog Detail Page Page</title>
+                            <title>Blog List Page</title>
                             <meta name="viewport" content="width=device-width, initial-scale=1" />
                             {siteConfig.favicon && <link rel="icon" href={siteConfig.favicon} />}
                         </Head>
                         {siteConfig.header && <Header {...siteConfig.header} data-sb-object-id={siteConfig.__id} />}
-                        {blogId && <Blog blogId={blogId} />}
+                        <BlogList />
                         {siteConfig.footer && <Footer {...siteConfig.footer} data-sb-object-id={siteConfig.__id} />}
                     </MuiContainer>
                 </MuiBox>
@@ -47,28 +47,19 @@ const BlogPage: React.FC<Props> = ({ dehydratedState, blogId, siteConfig}) => {
     );
 };
 
-export default BlogPage;
+export default BlogListPage;
 
-export async function getServerSideProps({ params } : { params: { slug: string } }) {
-    if (!params) {
-        return {
-            notFound: true,
-        }
-    }
-
-    const slug = params.slug
-
+export async function getStaticProps() {
     const queryClient = new QueryClient()
 
     await queryClient.prefetchQuery({
-      queryKey: ['blog', slug],
-      queryFn: () => fetchBlogById(slug),
+      queryKey: ['posts', 20],
+      queryFn: () => fetchPosts(20),
     });
 
     return {
       props: {
         dehydratedState: dehydrate(queryClient),
-        blogId: slug,
         siteConfig: config
       },
     }

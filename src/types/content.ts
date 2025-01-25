@@ -1,8 +1,10 @@
-export type Document = Config | Page;
-export type DocumentTypeNames = 'Config' | 'Page';
+export type Document = Config | Page | BlogPage;
+export type DocumentTypeNames = 'Config' | 'Page' | 'BlogPage';
 
-export type Section = CardsSection | HeroSection;
+export type Section = CardsSection | HeroSection | TextSection | SpacerSection;
 
+export type SpacerSize = 'S' | 'M' | 'L' | 'XL' | 'XXL';
+export type BackgroundColor = 'primary' | 'secondary' | 'tertiary';
 /** Document types */
 export type Config = {
     __id: string;
@@ -17,6 +19,15 @@ export type Page = {
     __id: string;
     __url: string;
     type: 'Page';
+    title: string;
+    sections?: Section[];
+    body?: string;
+};
+
+export type BlogPage = {
+    __id: string;
+    __url: string;
+    type: 'BlogPage';
     title: string;
     sections?: Section[];
     body?: string;
@@ -68,6 +79,34 @@ export type HeroSection = {
     image?: Image;
     video?: Video;
     mediaAsBackground?: boolean;
+    textAlign?: 'left' | 'center';
+    width?: 'full' | 'inset';
+    backgroundColor?: BackgroundColor;
+};
+
+export type TextSection = {
+    type: 'TextSection';
+    items?: Text[];
+    layout?: 'horizontal' | 'stacked';
+    textAlign?: 'left' | 'center';
+    width?: 'full' | 'inset';
+    backgroundColor?: BackgroundColor;
+};
+// Layout types
+// stacked layout vs horizontal layout
+export type Text = {
+    type: 'Text';
+    eyebrow?: string;
+    title?: string;
+    subtitle?: string;
+    text?: string;
+    disclaimer?: string;
+};
+
+export type SpacerSection = {
+    type: 'SpacerSection';
+    size?: SpacerSize;
+    backgroundColor?: BackgroundColor;
 };
 
 export type Image = {

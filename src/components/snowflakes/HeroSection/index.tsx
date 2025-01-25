@@ -81,6 +81,35 @@ export const HeroSection: React.FC<Props> = (props) => {
     return (
         <MuiBox sx={{ py: { xs: 6, sm: 10 } }} data-sb-field-path={fieldPath}>
             <MuiGrid container spacing={4}>
+                {image?.type === 'Image' && (
+                    <MuiGrid item xs={12} md={hasTextContent ? 6 : 12}>
+                        <MuiBox
+                            component="img"
+                            sx={{
+                                height: 'auto',
+                                maxWidth: '100%',
+                                width: '100%'
+                            }}
+                            alt={image?.altText}
+                            src={image?.url}
+                            data-sb-field-path=".image .image.url#@src .image.altText#@alt"
+                        />
+                    </MuiGrid>
+                )}
+                {video?.type === 'Video' && (
+                    <MuiGrid item xs={12} md={hasTextContent ? 6 : 12}>
+                        <MuiBox
+                            sx={{
+                                height: 'auto',
+                                maxWidth: '100%',
+                                width: '100%'
+                            }}
+                            data-sb-field-path=".video .video.url#@src .video.altText#@alt"
+                        >
+                            <Player src={video.url} />
+                        </MuiBox>
+                    </MuiGrid>
+                )}
                 {hasTextContent && (
                     <MuiGrid item xs={12} md={hasMedia ? 6 : 12}>
                         {title && (
@@ -120,35 +149,6 @@ export const HeroSection: React.FC<Props> = (props) => {
                                 ))}
                             </MuiStack>
                         )}
-                    </MuiGrid>
-                )}
-                {image?.type === 'Image' && (
-                    <MuiGrid item xs={12} md={hasTextContent ? 6 : 12}>
-                        <MuiBox
-                            component="img"
-                            sx={{
-                                height: 'auto',
-                                maxWidth: '100%',
-                                width: '100%'
-                            }}
-                            alt={image?.altText}
-                            src={image?.url}
-                            data-sb-field-path=".image .image.url#@src .image.altText#@alt"
-                        />
-                    </MuiGrid>
-                )}
-                {video?.type === 'Video' && (
-                    <MuiGrid item xs={12} md={hasTextContent ? 6 : 12}>
-                        <MuiBox
-                            sx={{
-                                height: 'auto',
-                                maxWidth: '100%',
-                                width: '100%'
-                            }}
-                            data-sb-field-path=".video .video.url#@src .video.altText#@alt"
-                        >
-                            <Player src={video.url} />
-                        </MuiBox>
                     </MuiGrid>
                 )}
             </MuiGrid>

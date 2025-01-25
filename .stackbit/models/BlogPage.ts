@@ -1,14 +1,15 @@
 import { Model } from '@stackbit/types';
 
-export const Page: Model = {
+export const BlogPage: Model = {
     type: 'page',
-    name: 'Page',
-    label: 'Landing Page',
-    urlPath: '/{slug}/',
-    filePath: 'content/pages/{slug}.md',
+    name: 'BlogPage',
+    label: 'Blog Page',
+    urlPath: '/blogs/{slug}/',
+    filePath: 'content/blogs/{slug}.md',
     hideContent: true,
     thumbnail: 'https://assets.stackbit.com/components/models/thumbnails/default.png',
     fields: [
+        
         { type: 'string', name: 'title', label: 'Title', default: 'This Is a New Page', required: true },
         {
             type: 'list',
@@ -20,11 +21,11 @@ export const Page: Model = {
                     type: 'HeroSection',
                     title: 'This Is A Big Hero Headline',
                     text: 'Aenean eros ipsum, interdum quis dignissim non, sollicitudin vitae nisl. Aenean vel aliquet elit, at blandit ipsum. Sed eleifend felis sit amet erat molestie, hendrerit malesuada justo ultrices. Nunc volutpat at erat itae interdum. Ut nec massa eget lorem blandit condimentum et at risus.\n',
-                    actions: [
-                        { type: 'Button', label: 'Get Started', url: '/', size: 'large', variant: 'contained' },
-                        { type: 'Button', label: 'Learn more', url: '/', size: 'large', variant: 'outlined' }
-                    ],
                     image: { type: 'Image', url: 'https://assets.stackbit.com/components/images/default/hero.png', altText: 'Hero section image' }
+                },
+                {
+                    type: 'TextSection',
+                    text: 'Aenean eros ipsum, interdum quis dignissim non, sollicitudin vitae nisl. Aenean vel aliquet elit, at blandit ipsum. Sed eleifend felis sit amet erat molestie, hendrerit malesuada justo ultrices. Nunc volutpat at erat itae interdum. Ut nec massa eget lorem blandit condimentum et at risus.\n'
                 }
             ]
         }

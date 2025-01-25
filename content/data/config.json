@@ -1,14 +1,21 @@
 {
     "type": "Config",
-    "favicon": "/images/favicon.svg",
+    "favicon": "/images/cat-2.jpg",
     "header": {
-        "title": "Technology Radar",
+        "title": "Brand Name",
         "navLinks": [
             {
                 "type": "Link",
                 "label": "Home",
                 "url": "/",
                 "underline": "hover"
+            },
+            {
+                "type": "Link",
+                "label": "Blogs",
+                "url": "/blogs",
+                "underline": "hover",
+                "color": "primary"
             },
             {
                 "type": "Link",
@@ -38,6 +45,13 @@
                 "label": "About",
                 "underline": "hover",
                 "url": "/about"
+            },
+            {
+                "type": "Link",
+                "label": "Blogs",
+                "url": "/blogs",
+                "underline": "hover",
+                "color": "primary"
             },
             {
                 "type": "Link",

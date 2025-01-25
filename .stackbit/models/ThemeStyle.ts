@@ -24,6 +24,21 @@ export const ThemeStyle: Model =  {
             type: 'color',
             name: 'secondaryColor',
             label: 'Secondary color'
+        },
+        {
+            type: 'color',
+            name: 'textPrimaryColor',
+            label: 'Text primary color'
+        },
+        {
+            type: 'color',
+            name: 'textSecondaryColor',
+            label: 'Text secondary color'
+        },
+        {
+            type: 'color',
+            name: 'backgroundColor',
+            label: 'Background color'
         }
     ]
 };
