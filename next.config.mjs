@@ -16,6 +16,7 @@ const nextConfig = {
         return `${APP_NAME}-${APP_VERSION}`
     },
     assetPrefix: ASSET_PREFIX,
+    distDir: 'dist',
     rewrites: async () => {
         return [
             {
