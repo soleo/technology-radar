@@ -16,6 +16,14 @@ const nextConfig = {
         return `${APP_NAME}-${APP_VERSION}`
     },
     assetPrefix: ASSET_PREFIX,
+    rewrites: async () => {
+        return [
+            {
+                source: `${ASSET_PREFIX}/_next/static/:path*`,
+                destination: '/_next/static/:path*',
+            },
+        ]
+    },
     images: {
         remotePatterns: [
           {
