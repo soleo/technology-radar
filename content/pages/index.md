@@ -43,7 +43,8 @@ sections:
           natus error sit voluptatem accusantium doloremque laudantium, totam
           rem aperiam, eaque ipsa quae. explicabo.</div>
 
-        disclaimer: This is a disclaimer
+        disclaimer: |
+          This is a disclaimer<sup>1</sup>
     layout: horizontal
     textAlign: center
     width: full

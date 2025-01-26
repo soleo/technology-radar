@@ -15,12 +15,16 @@ export const Blog = ({ blogId }: IBlogProps) => {
 
   return (
     <Grid container spacing={3} component={'article'}>
-        <Grid item xs={12}>
-            <Typography variant="h4" component="h1" gutterBottom>{data.title ?? ''} </Typography>
-        </Grid>
-        <Grid item xs={12}>
-            <Markdown options={{ forceBlock: true }}>{data.body ?? ''}</Markdown>
-        </Grid>
+        {data?.title && (
+            <Grid item xs={12}>
+                <Typography variant="h4" component="h1" gutterBottom>{data.title}</Typography>
+            </Grid>
+        )}
+        {data?.body && (
+            <Grid item xs={12}>
+                <Markdown options={{ forceBlock: true }}>{data.body}</Markdown>
+            </Grid>
+        )}
     </Grid>
   )
 }

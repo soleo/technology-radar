@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
 
-type Post = {
+export type Post = {
   id: number
   title: string
   body: string

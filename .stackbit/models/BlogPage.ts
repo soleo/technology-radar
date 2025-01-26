@@ -9,7 +9,6 @@ export const BlogPage: Model = {
     hideContent: true,
     thumbnail: 'https://assets.stackbit.com/components/models/thumbnails/default.png',
     fields: [
-        
         { type: 'string', name: 'title', label: 'Title', default: 'This Is a New Page', required: true },
         {
             type: 'list',
