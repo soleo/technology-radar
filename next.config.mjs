@@ -17,13 +17,13 @@ const nextConfig = {
     },
     assetPrefix: ASSET_PREFIX,
     distDir: 'dist',
-    rewrites: async () => {
-        return [
-            {
-                source: `${ASSET_PREFIX}/_next/static/:path*`,
-                destination: '/_next/static/:path*',
-            },
-        ]
+    async rewrites() {
+        return {
+            beforeFiles: [{
+                source: `${ASSET_PREFIX}/:path*`,
+                destination: '/:path*',
+            }],
+        }
     },
     images: {
         remotePatterns: [
