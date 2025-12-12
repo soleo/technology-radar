@@ -21,7 +21,7 @@
         "@tanstack/react-query-devtools": "^5.64.2",
         "front-matter": "^4.0.2",
         "glob": "^10.4.2",
-        "js-yaml": "^4.1.0",
+        "js-yaml": "^4.1.1",
         "markdown-to-jsx": "^7.7.1",
         "next": "^15.4.10",
         "next-video": "^2.0.1",
